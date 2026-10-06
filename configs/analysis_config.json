@@ -1,0 +1,29 @@
+{
+  "python_version": "3.11",
+  "alpha": 0.05,
+  "questionnaire_target_n": "60-80",
+  "controlled_task_target_n": "24-30",
+  "controlled_task_minutes_per_condition": 20,
+  "likert_min": 1,
+  "likert_max": 5,
+  "cli_items": [
+    "cl_mental_demand",
+    "cl_effort",
+    "cl_focus_difficulty",
+    "cl_refocus_difficulty"
+  ],
+  "pi_items": [
+    "p_delay",
+    "p_avoid",
+    "p_replace",
+    "p_unrelated_switch"
+  ],
+  "distraction_frequency_items": [
+    "messaging_freq",
+    "notifications_freq",
+    "browser_tab_switch_freq",
+    "ide_browser_switch_freq",
+    "background_media_freq",
+    "unrelated_social_freq"
+  ]
+}

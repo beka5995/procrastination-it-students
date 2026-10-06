@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets / local config
+.env
+.env.*
+*.key
+*.pem
+secrets.*
+credentials.*
+
+# Logs and caches
+*.log
+.cache/
+.pytest_cache/
+
+# Raw / processed participant data
+data/raw/*
+!data/raw/questionnaire_template.csv
+!data/raw/controlled_task_template.csv
+data/processed/*
+!data/processed/.gitkeep
+
+# Temporary exports
+*.tmp
+*.temp
+~$*
