@@ -1,0 +1,48 @@
+{
+  "run_type": "synthetic_sample_smoke_test",
+  "timestamp": "2026-10-07T00:24:47",
+  "alpha": 0.05,
+  "sample_sizes": {
+    "questionnaire_rows": 8,
+    "controlled_task_rows": 8,
+    "controlled_task_participants": 4
+  },
+  "primary_metric": {
+    "name": "delta_cli_interrupted_minus_focused",
+    "value": 1.0,
+    "paired_test": "paired_t_test",
+    "p_value": 0.07270471310932962,
+    "effect_size_paired_cohens_d": 1.3587324409735149
+  },
+  "rq1": {
+    "friedman_statistic": 27.235023041474623,
+    "p_value": 5.133455099639768e-05,
+    "mean_frequency_by_distraction": {
+      "ide_browser_switch_freq": 4.0,
+      "browser_tab_switch_freq": 4.0,
+      "notifications_freq": 3.5,
+      "messaging_freq": 3.5,
+      "unrelated_social_freq": 3.0,
+      "background_media_freq": 2.375
+    }
+  },
+  "rq2_survey": {
+    "spearman_rho": 0.6946232319096901,
+    "p_value": 0.055884725588007014
+  },
+  "rq3": {
+    "spearman_rho": 0.680722891566265,
+    "p_value": 0.06312647188254239
+  },
+  "guardrails": {
+    "questionnaire_missing_rate": 0.0,
+    "missing_rate_limit": 0.1,
+    "missing_rate_pass": true,
+    "cli_cronbach_alpha": 0.869198312236287,
+    "pi_cronbach_alpha": 0.9104900769542326,
+    "cronbach_alpha_target": 0.7,
+    "duplicate_participant_ids": 0,
+    "duplicate_id_check_pass": true
+  },
+  "note": "These values come from synthetic sample data and are only used to test the pipeline. They are not research findings."
+}

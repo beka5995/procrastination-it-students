@@ -1,0 +1,13 @@
+TASK 2 SAMPLE PIPELINE RUN
+==========================
+Questionnaire rows: 8
+Controlled-task rows: 8
+Controlled-task participants: 4
+Primary metric Delta CLI: 1.0
+Paired test: paired_t_test
+p-value: 0.07270471310932962
+Paired Cohen's d: 1.3587324409735149
+Missing-rate check: True
+Duplicate-ID check: True
+
+IMPORTANT: this is a smoke test using synthetic sample data, not a final research result.
