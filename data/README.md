@@ -1,12 +1,10 @@
 # Data Folder
 
-This repository does not contain real participant-level research data.
+This repository separates test data from future participant data.
 
-## `raw/`
-Contains only CSV templates that define the expected column structure.
+- `sample/` — synthetic 5–10 row micro-files used only for Task 2 pipeline testing. These are safe to commit.
+- `raw/` — templates plus future local raw participant files. Real participant files are ignored by Git.
+- `processed/` — generated local datasets. They are ignored by Git except for `.gitkeep`.
 
-## `processed/`
-Created by the data-preparation notebook. Real processed files are ignored by Git.
-
-### Privacy rule
+## Privacy rule
 Do not commit names, student IDs, private messages, screenshots containing personal content, or any other identifying participant information.

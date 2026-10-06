@@ -1,9 +1,9 @@
 # Reproducibility & Audit Checklist
 
-A reviewer should be able to check the following points in under two minutes:
+A reviewer can check the repository in under two minutes:
 
-- [ ] **Repository structure is clear.** README, source code, notebooks, configuration, data templates, and results folders are present.
-- [ ] **Environment is reproducible.** Python 3.11 is specified and package versions are pinned in `requirements.txt`.
-- [ ] **Private data are protected.** Real participant files are excluded by `.gitignore`; only empty templates are committed.
-- [ ] **Analysis procedure is documented.** RQ1–RQ3, variables, metrics, statistical tests, and alpha = 0.05 are described in the README and research design.
-- [ ] **Execution path is simple.** A reviewer can install dependencies and run the two notebooks in order.
+- [ ] **Environment:** Python 3.11 is specified and all packages in `requirements.txt` use exact version pins.
+- [ ] **Configuration:** `configs/analysis_config.json` contains paths, alpha, sample sizes, metric settings, and data-quality guardrails.
+- [ ] **Executable measurement tool:** `python src/main.py` reads the sample files and writes `results/sample/sample_results.json` plus `run_log.txt`.
+- [ ] **Test data:** `data/sample/` contains only synthetic micro-data; real participant data are excluded by `.gitignore`.
+- [ ] **Documentation:** README includes research questions, structure, system requirements, 2–3 command Quickstart, planned measurements, citation, and license.

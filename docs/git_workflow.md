@@ -1,30 +1,33 @@
 # Git Workflow
 
-## First Repository Setup
+## Initial setup
 
 ```bash
 git init
 git checkout -b main
-git add .
-git commit -m "Initial research repository"
 git remote add origin <YOUR_GITHUB_REPOSITORY_URL>
-git push -u origin main
 ```
 
-## Team Workflow
+## Normal pair workflow
 
-Before starting new work:
+Before starting work:
 
 ```bash
 git pull origin main
 ```
 
-After making a small, understandable change:
+After a meaningful change:
 
 ```bash
 git add .
-git commit -m "Update questionnaire draft"
+git commit -m "Add Task 2 sample pipeline"
 git push origin main
 ```
 
-Use short commit messages that describe one change. Avoid committing real participant data, passwords, temporary files, or large unrelated files.
+Useful commit messages for the current Task 2 update:
+
+- `Add methodology passport and experiment config`
+- `Add synthetic sample data and runnable pipeline`
+- `Update README quickstart for Task 2`
+
+Do not commit real participant data, `.venv/`, secrets, Jupyter checkpoints, or cache files.

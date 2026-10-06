@@ -1,8 +1,7 @@
 # Results
 
-This folder is reserved for reproducible outputs generated after real data collection.
+- `sample/` — output of the Task 2 smoke test on synthetic data. These files demonstrate that the pipeline runs.
+- `figures/` — future plots from real analysis.
+- `tables/` — future statistical tables from real analysis.
 
-- `figures/` — plots and charts
-- `tables/` — exported statistical summaries
-
-Do not invent or manually type final numerical results. Results should be generated from the analysis notebook or script.
+The sample output is **not** an empirical research result. Final values must be generated only after real data collection.

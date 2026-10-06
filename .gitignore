@@ -35,12 +35,23 @@ credentials.*
 .cache/
 .pytest_cache/
 
-# Raw / processed participant data
+# Real participant data (keep templates and synthetic samples only)
 data/raw/*
 !data/raw/questionnaire_template.csv
 !data/raw/controlled_task_template.csv
 data/processed/*
 !data/processed/.gitkeep
+
+# Future real analysis exports
+results/tables/*
+!results/tables/.gitkeep
+results/figures/*
+!results/figures/.gitkeep
+
+# Task 2 synthetic sample output is allowed in Git
+!results/sample/
+!results/sample/sample_results.json
+!results/sample/run_log.txt
 
 # Temporary exports
 *.tmp
