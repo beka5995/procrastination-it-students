@@ -105,3 +105,15 @@ def paired_condition_test(controlled_df: pd.DataFrame) -> dict:
         "mean_difference": mean_difference,
         "shapiro_p": shapiro_p,
     }
+
+
+def paired_cohens_d(focused: pd.Series, interrupted: pd.Series) -> float:
+    """Cohen's d for paired measurements: mean difference / SD of differences."""
+    pair = pd.concat([focused, interrupted], axis=1).dropna()
+    if len(pair) < 2:
+        return float("nan")
+    diff = pair.iloc[:, 1] - pair.iloc[:, 0]
+    sd = diff.std(ddof=1)
+    if sd == 0 or np.isnan(sd):
+        return float("nan")
+    return float(diff.mean() / sd)

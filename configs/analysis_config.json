@@ -1,11 +1,26 @@
 {
+  "project_name": "Procrastination Triggers in the Digital Environment",
   "python_version": "3.11",
   "alpha": 0.05,
+  "mode": "sample",
+  "paths": {
+    "questionnaire_sample": "data/sample/questionnaire_sample.csv",
+    "controlled_task_sample": "data/sample/controlled_task_sample.csv",
+    "output_directory": "results/sample"
+  },
   "questionnaire_target_n": "60-80",
   "controlled_task_target_n": "24-30",
   "controlled_task_minutes_per_condition": 20,
   "likert_min": 1,
   "likert_max": 5,
+  "primary_metric": "delta_cli_interrupted_minus_focused",
+  "guardrails": {
+    "max_missing_rate": 0.1,
+    "cronbach_alpha_target": 0.7,
+    "valid_likert_min": 1,
+    "valid_likert_max": 5,
+    "duplicate_participant_ids_allowed": false
+  },
   "cli_items": [
     "cl_mental_demand",
     "cl_effort",

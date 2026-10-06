@@ -1,0 +1,9 @@
+participant_id,study_year,programming_experience_semesters,study_format,device_setup,sleep_hours,sleep_quality,academic_motivation,task_difficulty,task_importance,deadline_days,weekly_study_hours,parallel_deadlines,messaging_freq,notifications_freq,browser_tab_switch_freq,ide_browser_switch_freq,background_media_freq,unrelated_social_freq,context_switch_count_per_hour,multitasking_freq,cl_mental_demand,cl_effort,cl_focus_difficulty,cl_refocus_difficulty,mental_fatigue,p_delay,p_avoid,p_replace,p_unrelated_switch
+S01,2,4,individual,one_screen,7.0,4,4,3,4,5,26,2,3,3,4,4,2,2,14,2,3,3,3,4,3,2,3,2,3
+S02,3,6,individual,two_screens,6.0,3,3,4,5,2,32,3,5,4,5,5,3,4,28,4,3,4,3,3,4,4,4,4,4
+S03,1,2,group,one_screen,8.0,5,5,2,3,7,20,1,2,2,3,3,1,2,10,2,2,2,2,3,2,1,2,2,2
+S04,4,8,individual,two_screens,5.5,2,3,5,5,1,38,4,5,5,5,5,4,5,34,5,4,4,4,4,5,5,4,5,4
+S05,2,3,mixed,one_screen,6.5,3,4,3,4,4,29,2,4,4,4,4,2,3,20,3,4,4,3,4,4,3,3,4,2
+S06,3,5,individual,one_screen,7.5,4,4,4,4,6,24,2,3,2,4,3,2,2,16,2,3,4,4,3,3,2,3,2,3
+S07,1,1,group,one_screen,6.0,3,3,4,3,3,22,3,4,5,4,4,3,4,25,4,3,3,3,3,4,4,4,3,4
+S08,4,7,mixed,two_screens,7.0,4,5,3,5,8,30,2,2,3,3,4,2,2,12,2,2,3,2,3,3,2,2,3,2
