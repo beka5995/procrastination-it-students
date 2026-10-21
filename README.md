@@ -1,30 +1,25 @@
 # Procrastination Triggers in the Digital Environment
 
-**How Context Switching and Micro-Habits Affect the Concentration of IT Students**
+## How Context Switching and Micro-Habits Affect the Concentration of IT Students
 
 **Authors:** Mashat Bekzhan, Nursultan Sultan  
 **Course:** Research Methods  
 **Group:** SCOM3001-ENG-9  
 **University:** Narxoz University  
-**Status:** Task 2 — methodology and reproducible measurement pipeline  
+**Status:** Task 3 - reproducible analysis and scientific visualization  
 **License:** MIT (code)
 
----
+> **Data transparency:** The bundled `data/raw/test_run.jsonl` is a synthetic pilot dataset used to validate the Task 3 pipeline. It is not empirical participant data and must not be reported as real findings about students.
 
 ## Project Overview
 
-This research studies how digital distractions and context switching are related to cognitive load, concentration, and academic procrastination among IT students. The design continues our Task 1 and SS5 work.
+This quantitative research studies how digital distractions and context switching are related to cognitive load, concentration, and academic procrastination among IT students.
 
-The project has two quantitative parts:
+Task 3 focuses on the controlled RQ2 comparison between:
+- **Focused baseline:** notifications disabled and no unrelated switching.
+- **Interrupted condition:** comparable technical task with standardized interruption signals.
 
-1. **Questionnaire study** — measures common digital distractions, context switching, cognitive load, and procrastination.
-2. **Controlled coding task** — compares a focused condition with an interrupted condition during a short programming / algorithmic task.
-
-The repository currently contains a **synthetic sample dataset** only for checking that the pipeline works before real data collection. Sample values are not research findings.
-
-## Research Aim
-
-The aim is to identify common disruptive digital habits among IT students and examine how context switching and multitasking are related to cognitive load, reduced concentration, and academic procrastination.
+The analysis pipeline filters warm-up rows, tracks task-error rate as a guardrail, calculates robust descriptive statistics and bootstrapped confidence intervals, and exports publication-ready figures.
 
 ## Research Questions
 
@@ -34,177 +29,177 @@ The aim is to identify common disruptive digital habits among IT students and ex
 
 **RQ3.** How is cognitive overload caused by digital distractions related to the transition from academic work to academic procrastination?
 
-## Main Hypothesis for the Controlled Comparison
+### Controlled-comparison hypothesis
 
-- **H0:** Perceived cognitive load does not significantly differ between the focused and interrupted conditions.
+- **H0:** Perceived cognitive load does not significantly differ between focused and interrupted conditions.
 - **H1:** Perceived cognitive load is higher in the interrupted condition than in the focused condition.
 
-The questionnaire analyses are interpreted as associations. Stronger causal interpretation is limited to the short controlled comparison.
+Primary metric:
+
+`Delta CLI = CLI(interrupted) - CLI(focused)`
 
 ## Repository Structure
 
 ```text
 procrastination-it-students/
-│
-├── README.md
-├── requirements.txt
-├── .gitignore
-├── LICENSE
-├── REPRODUCIBILITY_CHECKLIST.md
-│
 ├── configs/
-│   └── analysis_config.json
+│   └── task3_analysis_config.json
 ├── data/
-│   ├── sample/
-│   │   ├── questionnaire_sample.csv
-│   │   └── controlled_task_sample.csv
 │   ├── raw/
+│   │   ├── README.md
+│   │   └── test_run.jsonl
 │   └── processed/
+│       └── metrics_summary.csv
 ├── docs/
-│   ├── methodology_passport.md
-│   ├── questionnaire.md
-│   ├── research_design.md
-│   └── git_workflow.md
+│   └── domain_model.md
 ├── notebooks/
-│   ├── 01_data_preparation.ipynb
-│   └── 02_statistical_analysis.ipynb
-├── scripts/
-│   └── run_analysis.py
+│   └── 01_data_analysis.ipynb
+├── reports/
+│   ├── task3_report.md
+│   └── figures/
+│       ├── fig1_cognitive_load_comparison.pdf
+│       ├── fig1_cognitive_load_comparison.png
+│       ├── fig2_completion_time_boxplot.pdf
+│       └── fig2_completion_time_boxplot.png
+├── results/
+│   └── task3_statistics.json
 ├── src/
-│   ├── main.py
-│   ├── data_cleaning.py
-│   └── analysis.py
-└── results/
-    ├── sample/
-    ├── figures/
-    └── tables/
+│   ├── process_data.py
+│   └── visualize.py
+├── .gitignore
+├── requirements.txt
+└── README.md
 ```
+
+Existing Task 1 / Task 2 documentation can remain in the same repository.
 
 ## System Requirements
 
-- Python **3.11**
+- Python 3.11 or 3.12
 - Windows 10/11, macOS, or Linux
-- 4 GB RAM minimum
-- No GPU is required
+- No GPU required
 
-The analysis is statistical, so CUDA, PyTorch, and model weights are not needed.
+## Quickstart
 
-## Quickstart — Task 2 Sample Run
-
-### Windows PowerShell
-
-Run these commands from the project folder:
-
-```powershell
-py -3.11 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe src\main.py
-```
-
-The third command should print `Sample pipeline completed successfully` and create:
-
-```text
-results/sample/sample_results.json
-results/sample/run_log.txt
-```
-
-### macOS / Linux
+From the repository root:
 
 ```bash
-python3.11 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python src/main.py
+python -m pip install -r requirements.txt
+python src/process_data.py
+python src/visualize.py
 ```
 
-## Experiment Configuration
-
-`configs/analysis_config.json` stores the parameters used by the sample pipeline:
-
-- significance level (`alpha = 0.05`);
-- expected sample sizes;
-- paths to sample data and output;
-- CLI and PI item lists;
-- distraction-frequency items;
-- data-quality guardrails.
-
-## Variables and Metrics
-
-For the controlled part of RQ2:
-
-- **Independent variable:** focused vs interrupted condition.
-- **Primary dependent variable:** Cognitive Load Index (CLI).
-- **Secondary dependent variables:** mental fatigue, task accuracy, completion time.
-- **Controls:** session duration, comparable task difficulty, programming experience, sleep, and counterbalanced condition order.
-
-For the questionnaire part, context switching and digital-distraction measures are observed predictors rather than experimentally assigned variables.
-
-### Primary Metric
-
-**Delta CLI = CLI(interrupted) − CLI(focused)**
-
-A positive value means higher reported cognitive load in the interrupted condition.
-
-### Guardrail Metrics
-
-- missing-data rate ≤ 10%;
-- Likert values remain within 1–5;
-- no duplicate questionnaire participant IDs;
-- target Cronbach's alpha ≥ 0.70 for the CLI and PI scales on the real dataset.
-
-### Baseline
-
-**Focused condition (B0):** 20-minute technical task with notifications disabled and no unrelated switching.
-
-**Interrupted condition (C1):** comparable task with standardized interruption signals.
-
-## Planned Measurements / Benchmark Table
-
-| Part | Metric | Method | Expected output |
-|---|---|---|---|
-| RQ1 | Distraction frequency | Descriptive statistics + Friedman test | Ranking and difference across distraction types |
-| RQ2 survey | Context switching vs CLI | Spearman rho | Direction and strength of association |
-| RQ2 controlled | Delta CLI | Paired t-test or Wilcoxon | Focused vs interrupted difference |
-| RQ2 controlled | Effect size | Paired Cohen's d | Practical magnitude of the difference |
-| RQ3 | CLI vs PI | Spearman rho | Association between cognitive load and procrastination |
-| Data quality | Cronbach's alpha / missing rate | Reliability + quality checks | Scale consistency and clean input |
-
-## Test Sample
-
-`data/sample/` contains small **synthetic** files used only for a smoke test. They make it possible for a reviewer to verify the pipeline before Week 7 without using real participant data.
-
-The executable script is:
+Then open:
 
 ```text
-src/main.py
+notebooks/01_data_analysis.ipynb
 ```
 
-It reads the experiment configuration, cleans the sample data, calculates the planned statistics, checks guardrails, and writes a JSON result plus a short log.
+and use **Restart Kernel and Run All**.
+
+## Data Processing & Statistical Rules
+
+1. Raw records are read from `data/raw/test_run.jsonl`.
+2. Rows with `phase = warmup` are removed before evaluation statistics.
+3. Task-error rows remain in the dataset for guardrail reporting but are excluded from the primary metric comparison.
+4. For each condition, the pipeline reports:
+   - Mean and SD
+   - Median
+   - p25 and p75
+   - p95 and p99
+   - Bootstrapped 95% CI around the median
+5. The paired CLI comparison uses participants with valid measurements in both conditions.
+6. Random seed is fixed at **42**.
+7. Statistical alpha is **0.05**.
+
+## Results & Discussion
+
+### Synthetic pilot benchmark table
+
+| Metric | Focused baseline | Interrupted condition |
+|---|---:|---:|
+| Cognitive Load Index (1-5), Median (p25-p75) | 2.23 (2.05-2.45) | 2.71 (2.53-3.19) |
+| Completion Time (s), Median (p25-p75) | 695.2 (659.1-749.3) | 801.0 (730.3-846.1) |
+| Accuracy (%), Median (p25-p75) | 88.0 (85.5-92.5) | 87.7 (78.9-93.5) |
+| Context Switches (count), Median (p25-p75) | 1.0 (0.0-2.0) | 6.0 (3.8-7.0) |
+| Task Error Rate (%) | 3.3 | 6.7 |
+
+
+The synthetic pilot produced **27 complete pairs** after guardrail filtering.  
+Mean Delta CLI was **0.52** with a bootstrapped 95% CI of **[0.37, 0.66]**.
+
+The normality check on paired CLI differences produced Shapiro-Wilk `p = 0.442`. The pipeline therefore selected **paired t test** for the bundled pilot dataset.
+
+**Interpretation boundary:** these values demonstrate the analysis procedure only. They do not support empirical claims about the real student population until the synthetic file is replaced with actual anonymized Week 7-8 observations.
+
+## Scientific Figures
+
+### Figure 1 - Cognitive Load Index with 95% CI
+
+![Cognitive Load Plot](reports/figures/fig1_cognitive_load_comparison.png)
+
+The y-axis explicitly reports the CLI scale (1-5). Individual paired observations are shown with the group median and bootstrapped 95% CI.
+
+### Figure 2 - Completion-Time Distribution with 95% CI
+
+![Completion Time Plot](reports/figures/fig2_completion_time_boxplot.png)
+
+The y-axis reports seconds. Boxplots show dispersion, while overlaid markers show the median and bootstrapped 95% CI. Distinct hatching and markers improve monochrome readability.
+
+Both plots are exported as:
+- vector `.pdf`;
+- raster `.png` at 300 DPI.
+
+## Domain Model
+
+The Task 3 domain artifact is available at:
+
+[`docs/domain_model.md`](docs/domain_model.md)
+
+It models the controlled-task data path from participant session to metric collection, raw JSONL, processing, notebook analysis, figures, and reporting.
+
+## Reproducibility
+
+The notebook is designed to be executed sequentially from top to bottom. It contains:
+- explanatory Markdown;
+- fixed random seed;
+- raw-data ingestion;
+- warm-up filtering;
+- statistical aggregation;
+- guardrail error-rate reporting;
+- paired comparison;
+- visible figure outputs.
 
 ## Real Data Privacy
 
-Real participant-level data must not be pushed to the public repository. `.gitignore` excludes local raw and processed data. Names, student IDs, passwords, private messages, and message content are not collected.
+For real data:
+- use anonymous participant codes such as `P01`;
+- do not store names or student IDs in GitHub;
+- do not commit private messages, credentials, or identifiable raw records;
+- keep any identifiable mapping outside the public repository.
 
-## Methodology Passport
+## Task 3 Release Tag
 
-The Task 2 methodology card is available here:
+After the final commit and after replacing pilot data if real observations are available:
 
-```text
-docs/methodology_passport.md
+```bash
+git tag -a v0.3-task3 -m "Task 3 research results and visualization"
+git push origin v0.3-task3
 ```
 
 ## Citation
 
 ```bibtex
 @misc{mashat_sultan_2026_procrastination,
-  author       = {Mashat, Bekzhan and Sultan, Nursultan},
-  title        = {Procrastination Triggers in the Digital Environment:
+  author      = {Mashat, Bekzhan and Sultan, Nursultan},
+  title       = {Procrastination Triggers in the Digital Environment:
                   How Context Switching and Micro-Habits Affect the Concentration of IT Students},
-  year         = {2026},
-  institution  = {Narxoz University},
-  note         = {Research Methods student project}
+  year        = {2026},
+  institution = {Narxoz University},
+  note        = {Research Methods student project}
 }
 ```
 
 ## License
 
-The source code is released under the **MIT License**. Participant-level research data are not covered by the software license and are not included in the public repository.
+Source code is released under the MIT License. Participant-level research data are not covered by the software license.
