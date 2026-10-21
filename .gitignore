@@ -1,59 +1,37 @@
 # Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-dist/
-*.egg-info/
-
-# Virtual environments
 .venv/
 venv/
-env/
+__pycache__/
+*.py[cod]
 
 # Jupyter
 .ipynb_checkpoints/
 
-# IDE / OS
-.vscode/
-.idea/
+# OS / editors
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
 
-# Secrets / local config
+# Secrets and local settings
 .env
-.env.*
 *.key
 *.pem
-secrets.*
-credentials.*
 
-# Logs and caches
+# Logs / runtime
 *.log
-.cache/
-.pytest_cache/
+logs/
 
-# Real participant data (keep templates and synthetic samples only)
+# Real/private participant data must stay local
+data/private/
+data/raw_real/
+data/processed_real/
+
+# Ignore arbitrary raw dumps, but keep the small Task 3 pilot file
 data/raw/*
-!data/raw/questionnaire_template.csv
-!data/raw/controlled_task_template.csv
+!data/raw/README.md
+!data/raw/test_run.jsonl
+
+# Keep only the aggregated Task 3 summary in public processed data
 data/processed/*
-!data/processed/.gitkeep
-
-# Future real analysis exports
-results/tables/*
-!results/tables/.gitkeep
-results/figures/*
-!results/figures/.gitkeep
-
-# Task 2 synthetic sample output is allowed in Git
-!results/sample/
-!results/sample/sample_results.json
-!results/sample/run_log.txt
-
-# Temporary exports
-*.tmp
-*.temp
-~$*
+!data/processed/metrics_summary.csv

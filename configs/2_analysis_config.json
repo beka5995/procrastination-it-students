@@ -1,0 +1,29 @@
+{
+  "project_title": "Procrastination Triggers in the Digital Environment: How Context Switching and Micro-Habits Affect the Concentration of IT Students",
+  "authors": [
+    "Mashat Bekzhan",
+    "Nursultan Sultan"
+  ],
+  "random_seed": 42,
+  "alpha": 0.05,
+  "bootstrap_resamples": 5000,
+  "raw_data_path": "data/raw/test_run.jsonl",
+  "processed_summary_path": "data/processed/metrics_summary.csv",
+  "statistics_output_path": "results/task3_statistics.json",
+  "figures_dir": "reports/figures",
+  "primary_metric": "cli",
+  "guardrail_metric": "task_error",
+  "evaluation_conditions": [
+    "focused",
+    "interrupted"
+  ],
+  "metrics": {
+    "cli": "Cognitive Load Index (1-5 Likert scale)",
+    "completion_time_sec": "Task Completion Time (seconds)",
+    "accuracy_pct": "Task Accuracy (%)",
+    "context_switches": "Context Switches (count)",
+    "procrastination_index": "Procrastination Index (1-5 Likert scale)",
+    "mental_fatigue": "Mental Fatigue (1-5 Likert scale)"
+  },
+  "data_note": "The included test_run.jsonl is a deterministic synthetic pilot dataset for pipeline validation. It is not empirical participant data."
+}

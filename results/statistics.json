@@ -1,0 +1,30 @@
+{
+  "data_origin": [
+    "synthetic_pilot"
+  ],
+  "raw_rows": 90,
+  "warmup_rows_filtered": 30,
+  "evaluation_rows_before_guardrail_filter": 60,
+  "evaluation_rows_after_guardrail_filter": 57,
+  "error_rate_pct": {
+    "focused": 3.333,
+    "interrupted": 6.667
+  },
+  "complete_pairs_for_primary_cli": 27,
+  "primary_metric": "Delta CLI = CLI(interrupted) - CLI(focused)",
+  "delta_cli_mean": 0.5151851851851852,
+  "delta_cli_median": 0.4099999999999997,
+  "delta_cli_mean_ci95": [
+    0.37369444444444444,
+    0.6585277777777777
+  ],
+  "delta_cli_sd": 0.390900049888522,
+  "cohens_dz": 1.3179460717186073,
+  "normality_shapiro_w": 0.9634733961678237,
+  "normality_shapiro_p": 0.4418382479954843,
+  "inferential_test": "paired_t_test",
+  "test_statistic": 6.84824867355733,
+  "p_value_two_sided_or_test_default": 2.8650516878156925e-07,
+  "alpha": 0.05,
+  "interpretation_guardrail": "The bundled dataset is synthetic pilot data for reproducibility testing. These statistics must not be reported as empirical findings about real students."
+}
