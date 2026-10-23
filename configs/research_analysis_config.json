@@ -9,7 +9,7 @@
   "bootstrap_resamples": 5000,
   "raw_data_path": "data/raw/test_run.jsonl",
   "processed_summary_path": "data/processed/metrics_summary.csv",
-  "statistics_output_path": "results/task3_statistics.json",
+  "statistics_output_path": "results/analysis_statistics.json",
   "figures_dir": "reports/figures",
   "primary_metric": "cli",
   "guardrail_metric": "task_error",
@@ -25,5 +25,7 @@
     "procrastination_index": "Procrastination Index (1-5 Likert scale)",
     "mental_fatigue": "Mental Fatigue (1-5 Likert scale)"
   },
-  "data_note": "The included test_run.jsonl is a deterministic synthetic pilot dataset for pipeline validation. It is not empirical participant data."
+  "data_note": "The included test_run.jsonl is a deterministic synthetic pilot dataset for pipeline validation. It is not empirical participant data.",
+  "analysis_scope": "RQ2b_controlled_within_subject_comparison",
+  "rq2a_note": "RQ2a is a separate observational Spearman association analysis and is not evaluated by the bundled controlled pilot."
 }
