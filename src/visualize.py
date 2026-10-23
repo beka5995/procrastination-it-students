@@ -135,7 +135,7 @@ def create_figures() -> list[Path]:
 
 def main() -> None:
     outputs = create_figures()
-    print("Task 3 figures created:")
+    print("figures created:")
     for p in outputs:
         print(f" - {p.relative_to(ROOT)}")
     print("PNG files are saved at 300 DPI; PDF files are vector exports.")
