@@ -61,7 +61,7 @@ def create_figures() -> list[Path]:
             label=f"{condition.title()} median (95% CI)",
         )
 
-    ax.set_xticks([0, 1], ["Focused", "Interrupted"])
+    ax.set_xticks([0, 1], [f"Focused (n={len(wide)})", f"Interrupted (n={len(wide)})"])
     ax.set_ylabel("Cognitive Load Index (1-5 Likert scale)")
     ax.set_xlabel("Experimental condition")
     ax.set_title("Cognitive load under focused and interrupted conditions")
@@ -83,7 +83,7 @@ def create_figures() -> list[Path]:
     fig, ax = plt.subplots(figsize=(7.2, 4.8))
     bp = ax.boxplot(
         data,
-        tick_labels=["Focused", "Interrupted"],
+        tick_labels=[f"Focused (n={len(data[0])})", f"Interrupted (n={len(data[1])})"],
         patch_artist=True,
         showfliers=True,
         widths=0.48,
@@ -135,7 +135,7 @@ def create_figures() -> list[Path]:
 
 def main() -> None:
     outputs = create_figures()
-    print("Task 3 figures created:")
+    print("Scientific figures created:")
     for p in outputs:
         print(f" - {p.relative_to(ROOT)}")
     print("PNG files are saved at 300 DPI; PDF files are vector exports.")
