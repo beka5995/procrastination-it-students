@@ -25,7 +25,7 @@
   "normality_shapiro_p": 0.4418382479954843,
   "inferential_test": "paired_t_test",
   "test_statistic": 6.84824867355733,
-  "p_value_one_sided": 1.432525843907846e-07,
+  "p_value_one_sided": 1.4325258439078462e-07,
   "alpha": 0.05,
   "interpretation_guardrail": "The bundled dataset is synthetic pilot data for reproducibility testing. These statistics must not be reported as empirical findings about real students."
 }
