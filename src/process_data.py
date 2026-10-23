@@ -9,7 +9,7 @@ import pandas as pd
 from scipy import stats
 
 ROOT = Path(__file__).resolve().parents[1]
-CONFIG_PATH = ROOT / "configs" / "task3_analysis_config.json"
+CONFIG_PATH = ROOT / "configs" / "research_analysis_config.json"
 
 
 def load_config(path: Path = CONFIG_PATH) -> dict:
@@ -128,7 +128,9 @@ def analyze_dataframe(df: pd.DataFrame, cfg: dict) -> tuple[pd.DataFrame, dict]:
 
     if len(delta) >= 2 and (not np.isnan(shapiro_p)) and shapiro_p >= 0.05:
         test_name = "paired_t_test"
-        test = stats.ttest_rel(cli_wide["interrupted"], cli_wide["focused"])
+        test = stats.ttest_rel(
+            cli_wide["interrupted"], cli_wide["focused"], alternative="greater"
+        )
         statistic = float(test.statistic)
         p_value = float(test.pvalue)
     elif len(delta) >= 2:
@@ -150,6 +152,7 @@ def analyze_dataframe(df: pd.DataFrame, cfg: dict) -> tuple[pd.DataFrame, dict]:
     cohens_dz = float(delta.mean() / delta_sd) if delta_sd and np.isfinite(delta_sd) else float("nan")
 
     statistics = {
+        "analysis_scope": cfg.get("analysis_scope", "RQ2b_controlled_within_subject_comparison"),
         "data_origin": sorted(df.get("data_origin", pd.Series(dtype=str)).dropna().unique().tolist()),
         "raw_rows": int(len(df)),
         "warmup_rows_filtered": int(len(warmup)),
@@ -167,7 +170,7 @@ def analyze_dataframe(df: pd.DataFrame, cfg: dict) -> tuple[pd.DataFrame, dict]:
         "normality_shapiro_p": float(shapiro_p),
         "inferential_test": test_name,
         "test_statistic": statistic,
-        "p_value_two_sided_or_test_default": p_value,
+        "p_value_one_sided": p_value,
         "alpha": float(cfg["alpha"]),
         "interpretation_guardrail": (
             "The bundled dataset is synthetic pilot data for reproducibility testing. "
@@ -192,7 +195,7 @@ def main() -> None:
     summary.to_csv(out_csv, index=False)
     out_json.write_text(json.dumps(statistics, indent=2), encoding="utf-8")
 
-    print("Task 3 data processing completed.")
+    print("Data processing completed.")
     print(f"Raw rows: {statistics['raw_rows']}")
     print(f"Warm-up rows filtered: {statistics['warmup_rows_filtered']}")
     print(f"Complete paired observations: {statistics['complete_pairs_for_primary_cli']}")
