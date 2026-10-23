@@ -1,9 +1,14 @@
 # Reproducibility & Audit Checklist
 
-A reviewer can check the repository in under two minutes:
+A reviewer can verify the project with the following checks:
 
-- [ ] **Environment:** Python 3.11 is specified and all packages in `requirements.txt` use exact version pins.
-- [ ] **Configuration:** `configs/analysis_config.json` contains paths, alpha, sample sizes, metric settings, and data-quality guardrails.
-- [ ] **Executable measurement tool:** `python src/main.py` reads the sample files and writes `results/sample/sample_results.json` plus `run_log.txt`.
-- [ ] **Test data:** `data/sample/` contains only synthetic micro-data; real participant data are excluded by `.gitignore`.
-- [ ] **Documentation:** README includes research questions, structure, system requirements, 2–3 command Quickstart, planned measurements, citation, and license.
+- [x] **Environment:** Python 3.11 is specified; `requirements.txt` uses exact pins; `environment.yml` mirrors the pinned Python dependencies for Conda.
+- [x] **Methodology:** RQ1 is stated as a testable repeated-measures comparison; RQ2a association is separated from the RQ2b controlled comparison.
+- [x] **Configuration:** the repository contains analysis configuration files with paths, alpha, random seed, metrics, and data-quality settings.
+- [x] **Executable pipeline:** `python src/main.py` runs the sample measurement pipeline and writes a JSON result plus run log.
+- [x] **Analysis pipeline:** `python src/process_data.py` filters warm-up rows, reports guardrail error rate, and produces descriptive statistics and the paired Delta CLI comparison.
+- [x] **Notebook:** `notebooks/01_data_analysis.ipynb` is sequentially executable with fixed seed 42 and visible outputs.
+- [x] **Scientific figures:** `python src/visualize.py` exports vector PDF and 300 DPI PNG figures with explicit scales and 95% confidence intervals.
+- [x] **Domain model:** `docs/domain_model.md` documents the controlled-task data path and metric collection points.
+- [x] **Data transparency:** bundled public data are explicitly synthetic pilot/sample data; they are not presented as empirical student findings.
+- [x] **Repository hygiene:** `.venv/`, caches, notebook checkpoints, credentials, and private participant data are excluded from version control.
